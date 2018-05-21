@@ -11,13 +11,13 @@ PATH_DOMAIN_CONFIG=${PATH_DEFAULT_DOMAIN_CONFIG}${DOMAIN}".conf"
 SITEROOT=${HOME_MCUS}
 #time modify of file config
 MTIME_DOMAIN_SET = `date -r "/home/deploy_scripts/config-auto-build-new-site/default.conf" "+%s"`
-MTIME_DOMAIN_GET = `date -r "${PATH_DOMAIN_CONFIG}" "+%s"`
+#MTIME_DOMAIN_GET = `date -r "${PATH_DOMAIN_CONFIG}" "+%s"`
 MTIME_ADMIN_SET = `date -r "/home/deploy_scripts/config-auto-build-new-site/admin.conf" "+%s"`
-MTIME_ADMIN_GET = `date -r "/etc/nginx/sites-available/admin.conf" "+%s"`
+#MTIME_ADMIN_GET = `date -r "/etc/nginx/sites-available/admin.conf" "+%s"`
 MTIME_AFFTRUST_SET = `date -r "/home/deploy_scripts/config-auto-build-new-site/afftrust.conf" "+%s"`
-MTIME_AFFTRUST_GET = `date -r "/etc/nginx/sites-available/afftrust.conf" "+%s"`
+#MTIME_AFFTRUST_GET = `date -r "/etc/nginx/sites-available/afftrust.conf" "+%s"`
 #copy default config
-if [ ! -f ${PATH_DOMAIN_CONFIG} -o MTIME_DOMAIN_SET>MTIME_DOMAIN_GET]; then
+if [ ! -f ${PATH_DOMAIN_CONFIG} -o MTIME_DOMAIN_SET>`date -r "${PATH_DOMAIN_CONFIG}" "+%s"`]; then
 	rm ${PATH_DOMAIN_CONFIG};
 	rm "/etc/nginx/sites-enabled/"${DOMAIN}".conf";
 	#copy and link config
@@ -29,7 +29,7 @@ fi
 
 
 #copy config admin
-if [ ! -f /etc/nginx/sites-available/admin.conf -o MTIME_ADMIN_SET>MTIME_ADMIN_GET]; then
+if [ ! -f /etc/nginx/sites-available/admin.conf -o MTIME_ADMIN_SET>`date -r "/etc/nginx/sites-available/admin.conf" "+%s"`]; then
 	rm "/etc/nginx/sites-available/admin.conf";
 	rm "/etc/nginx/sites-enabled/admin.conf";
 	cp "/home/deploy_scripts/config-auto-build-new-site/admin.conf" "/etc/nginx/sites-available/admin.conf";
@@ -38,7 +38,7 @@ if [ ! -f /etc/nginx/sites-available/admin.conf -o MTIME_ADMIN_SET>MTIME_ADMIN_G
 fi
 
 #copy config afftrust
-if [ ! -f /etc/nginx/sites-available/afftrust.conf -o MTIME_AFFTRUST_SET>MTIME_AFFTRUST_GET ]; then
+if [ ! -f /etc/nginx/sites-available/afftrust.conf -o MTIME_AFFTRUST_SET>`date -r "/etc/nginx/sites-available/afftrust.conf" "+%s"` ]; then
 	rm "/etc/nginx/sites-available/afftrust.conf";
 	rm "/etc/nginx/sites-enabled/afftrust.conf";
 	cp "/home/deploy_scripts/config-auto-build-new-site/afftrust.conf" "/etc/nginx/sites-available/afftrust.conf";

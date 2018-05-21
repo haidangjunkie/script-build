@@ -17,7 +17,7 @@ MTIME_ADMIN_SET=`date -r "/home/deploy_scripts/config-auto-build-new-site/admin.
 MTIME_AFFTRUST_SET=`date -r "/home/deploy_scripts/config-auto-build-new-site/afftrust.conf" "+%s"`
 #MTIME_AFFTRUST_GET=`date -r "/etc/nginx/sites-available/afftrust.conf" "+%s"`
 #copy default config
-if [ ! -f ${PATH_DOMAIN_CONFIG} -o `date -r "/home/deploy_scripts/config-auto-build-new-site/default.conf" "+%s"`>`date -r "${PATH_DOMAIN_CONFIG}" "+%s"` ]; then
+if [ ! -f ${PATH_DOMAIN_CONFIG} ]; then
 	rm ${PATH_DOMAIN_CONFIG};
 	rm "/etc/nginx/sites-enabled/"${DOMAIN}".conf";
 	#copy and link config

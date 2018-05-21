@@ -10,12 +10,12 @@ PATH_DEFAULT_DOMAIN_CONFIG="/etc/nginx/sites-available/"
 PATH_DOMAIN_CONFIG=${PATH_DEFAULT_DOMAIN_CONFIG}${DOMAIN}".conf"
 SITEROOT=${HOME_MCUS}
 #time modify of file config
-MTIME_DOMAIN_SET = `date -r "/home/deploy_scripts/config-auto-build-new-site/default.conf" "+%s"`
-#MTIME_DOMAIN_GET = `date -r "${PATH_DOMAIN_CONFIG}" "+%s"`
-MTIME_ADMIN_SET = `date -r "/home/deploy_scripts/config-auto-build-new-site/admin.conf" "+%s"`
-#MTIME_ADMIN_GET = `date -r "/etc/nginx/sites-available/admin.conf" "+%s"`
-MTIME_AFFTRUST_SET = `date -r "/home/deploy_scripts/config-auto-build-new-site/afftrust.conf" "+%s"`
-#MTIME_AFFTRUST_GET = `date -r "/etc/nginx/sites-available/afftrust.conf" "+%s"`
+MTIME_DOMAIN_SET=`date -r "/home/deploy_scripts/config-auto-build-new-site/default.conf" "+%s"`
+#MTIME_DOMAIN_GET=`date -r "${PATH_DOMAIN_CONFIG}" "+%s"`
+MTIME_ADMIN_SET=`date -r "/home/deploy_scripts/config-auto-build-new-site/admin.conf" "+%s"`
+#MTIME_ADMIN_GET=`date -r "/etc/nginx/sites-available/admin.conf" "+%s"`
+MTIME_AFFTRUST_SET=`date -r "/home/deploy_scripts/config-auto-build-new-site/afftrust.conf" "+%s"`
+#MTIME_AFFTRUST_GET=`date -r "/etc/nginx/sites-available/afftrust.conf" "+%s"`
 #copy default config
 if [ ! -f ${PATH_DOMAIN_CONFIG} -o MTIME_DOMAIN_SET>`date -r "${PATH_DOMAIN_CONFIG}" "+%s"`]; then
 	rm ${PATH_DOMAIN_CONFIG};

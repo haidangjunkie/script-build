@@ -17,7 +17,7 @@ MTIME_ADMIN_SET=`date -r "/home/deploy_scripts/config-auto-build-new-site/admin.
 MTIME_AFFTRUST_SET=`date -r "/home/deploy_scripts/config-auto-build-new-site/afftrust.conf" "+%s"`
 #MTIME_AFFTRUST_GET=`date -r "/etc/nginx/sites-available/afftrust.conf" "+%s"`
 #copy default config
-if [ ! -f ${PATH_DOMAIN_CONFIG} -o MTIME_DOMAIN_SET>`date -r "${PATH_DOMAIN_CONFIG}" "+%s"`]; then
+if [ ! -f ${PATH_DOMAIN_CONFIG} -o MTIME_DOMAIN_SET>`date -r "${PATH_DOMAIN_CONFIG}" "+%s"` ]; then
 	rm ${PATH_DOMAIN_CONFIG};
 	rm "/etc/nginx/sites-enabled/"${DOMAIN}".conf";
 	#copy and link config
@@ -29,7 +29,7 @@ fi
 
 
 #copy config admin
-if [ ! -f /etc/nginx/sites-available/admin.conf -o MTIME_ADMIN_SET>`date -r "/etc/nginx/sites-available/admin.conf" "+%s"`]; then
+if [ ! -f /etc/nginx/sites-available/admin.conf -o MTIME_ADMIN_SET>`date -r "/etc/nginx/sites-available/admin.conf" "+%s"` ]; then
 	rm "/etc/nginx/sites-available/admin.conf";
 	rm "/etc/nginx/sites-enabled/admin.conf";
 	cp "/home/deploy_scripts/config-auto-build-new-site/admin.conf" "/etc/nginx/sites-available/admin.conf";
